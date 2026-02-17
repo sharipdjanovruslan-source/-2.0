@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Материалы - ORIOKS 2.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .materials-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .materials-table th {
+            background: #27ae60;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border: none;
+        }
+        
+        .materials-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: top;
+        }
+        
+        .materials-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .materials-table tr:hover {
+            background: #f0fff4;
+        }
+        
+        .download-link {
+            color: #3498db;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            background: #f8f9fa;
+            transition: all 0.3s;
+            margin: 0.2rem;
+        }
+        
+        .download-link:hover {
+            background: #e3f2fd;
+            color: #2980b9;
+            text-decoration: none;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: #2980b9;
+        }
+        
+        .subject-info {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .subject-info h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .grade {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .grade-good {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .grade-excellent {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        @media (max-width: 768px) {
+            .materials-table {
+                font-size: 0.9rem;
+            }
+            
+            .download-link {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span>📚</span>
+                <span>ORIOKS 2.0 - Материалы</span>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html"><span>🏠</span> Главная</a></li>
+                    <li><a href="news.html"><span>📖</span> Новости</a></li>
+                    <li><a href="materials.html" style="background: rgba(255,255,255,0.1);"><span>📁</span> Материалы</a></li>
+                    <li><a href="calendar.html"><span>📅</span> Календарь</a></li>
+                    <li><a href="about.html"><span>ℹ️</span> О нас</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="subject-info">
+            <h2><span>📁</span> Учебные материалы</h2>
+            <p style="color: #666; margin-bottom: 1.5rem;">Все материалы и задания по вашим дисциплинам</p>
+        </div>
+        
+        <table class="materials-table">
+            <thead>
+                <tr>
+                    <th width="150">Предмет</th>
+                    <th>Материалы</th>
+                    <th width="140">Преподаватель</th>
+                    <th width="100">Оценки</th>
+                    <th width="150">Ближайшие зачёты</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Социология</strong></td>
+                    <td>
+                        <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                            <a href="#" class="download-link"><span>📄</span> Лекция 1.pdf</a>
+                            <a href="#" class="download-link"><span>📄</span> Практика.pdf</a>
+                            <a href="#" class="download-link"><span>📄</span> Задание.docx</a>
+                            <a href="#" class="download-link"><span>📄</span> Конспект.pdf</a>
+                        </div>
+                    </td>
+                    <td>Пудина А.В.</td>
+                    <td><span class="grade grade-good">4.5</span></td>
+                    <td><strong>12 декабря</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>История России</strong></td>
+                    <td>
+                        <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                            <a href="#" class="download-link"><span>📄</span> Конспект.docx</a>
+                            <a href="#" class="download-link"><span>📄</span> Тесты.pdf</a>
+                            <a href="#" class="download-link"><span>📄</span> Лекция 3.pdf</a>
+                        </div>
+                    </td>
+                    <td>Смирнов И.П.</td>
+                    <td><span class="grade grade-excellent">5.0</span></td>
+                    <td><strong>18 декабря</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Высшая математика</strong></td>
+                    <td>
+                        <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                            <a href="#" class="download-link"><span>📄</span> Задачи.pdf</a>
+                            <a href="#" class="download-link"><span>📄</span> Формулы.docx</a>
+                            <a href="#" class="download-link"><span>📄</span> Лекция 5.pdf</a>
+                        </div>
+                    </td>
+                    <td>Иванов С.М.</td>
+                    <td><span class="grade grade-good">4.0</span></td>
+                    <td><strong>20 декабря</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Физика</strong></td>
+                    <td>
+                        <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                            <a href="#" class="download-link"><span>📄</span> Лабораторные.docx</a>
+                            <a href="#" class="download-link"><span>📄</span> Лекции 1-5.pdf</a>
+                            <a href="#" class="download-link"><span>📄</span> Задачи.docx</a>
+                        </div>
+                    </td>
+                    <td>Петров А.К.</td>
+                    <td><span class="grade grade-excellent">5.0</span></td>
+                    <td><strong>15 декабря</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Программирование</strong></td>
+                    <td>
+                        <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                            <a href="#" class="download-link"><span>📄</span> Практика.pdf</a>
+                            <a href="#" class="download-link"><span>📄</span> Примеры кода.zip</a>
+                            <a href="#" class="download-link"><span>📄</span> Задание 4.docx</a>
+                        </div>
+                    </td>
+                    <td>Козлов Д.В.</td>
+                    <td><span class="grade grade-good">4.0</span></td>
+                    <td><strong>22 декабря</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Иностранный язык</strong></td>
+                    <td>
+                        <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                            <a href="#" class="download-link"><span>📄</span> Тексты.docx</a>
+                            <a href="#" class="download-link"><span>📄</span> Грамматика.pdf</a>
+                            <a href="#" class="download-link"><span>📄</span> Задания.docx</a>
+                        </div>
+                    </td>
+                    <td>Морозова Е.С.</td>
+                    <td><span class="grade grade-good">4.5</span></td>
+                    <td><strong>10 декабря</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <a href="index.html" class="back-btn">
+            <span>←</span> Назад на главную
+        </a>
+    </div>
+</body>
+</html>

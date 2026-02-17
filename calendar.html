@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Календарь - ORIOKS 2.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .calendar-header {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .calendar-header h1 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .month-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .month-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+        }
+        
+        .month-btn:hover {
+            background: #2980b9;
+        }
+        
+        .current-month {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .calendar-day-header {
+            background: #9b59b6;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .calendar-day {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s;
+            min-height: 100px;
+            position: relative;
+        }
+        
+        .calendar-day:hover {
+            border-color: #3498db;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .calendar-day.today {
+            background: #fff3cd;
+            border-color: #ffc107;
+            font-weight: bold;
+        }
+        
+        .calendar-day.event {
+            border-color: #27ae60;
+            background: #f0fff4;
+        }
+        
+        .day-number {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .event-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #e74c3c;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+        
+        .event-item {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.3rem;
+            text-align: left;
+            padding: 0.2rem 0.4rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 3px solid #3498db;
+        }
+        
+        .events-sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .events-sidebar h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .event-card {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .event-date {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+        
+        .event-title {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-time {
+            font-size: 0.9rem;
+            color: #27ae60;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: #2980b9;
+        }
+        
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 992px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .calendar-grid {
+                gap: 5px;
+            }
+            
+            .calendar-day {
+                min-height: 80px;
+                padding: 0.8rem 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .event-item {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span>📚</span>
+                <span>ORIOKS 2.0 - Календарь</span>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html"><span>🏠</span> Главная</a></li>
+                    <li><a href="news.html"><span>📖</span> Новости</a></li>
+                    <li><a href="materials.html"><span>📁</span> Материалы</a></li>
+                    <li><a href="calendar.html" style="background: rgba(255,255,255,0.1);"><span>📅</span> Календарь</a></li>
+                    <li><a href="about.html"><span>ℹ️</span> О нас</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="calendar-header">
+            <h1><span>📅</span> Календарь учебных событий</h1>
+            <div class="month-selector">
+                <button class="month-btn">←</button>
+                <div class="current-month">Декабрь 2025</div>
+                <button class="month-btn">→</button>
+            </div>
+            <p style="color: #666;">Сегодня: <strong>1 декабря 2025</strong></p>
+        </div>
+        
+        <div class="layout">
+            <div>
+                <div class="calendar-grid">
+                    <div class="calendar-day-header">Пн</div>
+                    <div class="calendar-day-header">Вт</div>
+                    <div class="calendar-day-header">Ср</div>
+                    <div class="calendar-day-header">Чт</div>
+                    <div class="calendar-day-header">Пт</div>
+                    <div class="calendar-day-header">Сб</div>
+                    <div class="calendar-day-header">Вс</div>
+                    
+                    <!-- Пустые дни предыдущего месяца -->
+                    <div class="calendar-day" style="background: #f8f9fa; color: #999;">29</div>
+                    <div class="calendar-day" style="background: #f8f9fa; color: #999;">30</div>
+                    
+                    <!-- Декабрь -->
+                    <div class="calendar-day today">
+                        <div class="day-number">1</div>
+                        <div class="event-item">Семинар по истории</div>
+                        <div class="event-item">Консультация</div>
+                    </div>
+                    <div class="calendar-day event">
+                        <div class="day-number">2</div>
+                        <div class="event-item">Лекция социология</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">3</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">4</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">5</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">6</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">7</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">8</div>
+                    </div>
+                    <div class="calendar-day event">
+                        <div class="day-number">9</div>
+                        <div class="event-item">Консультация история</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">10</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">11</div>
+                    </div>
+                    <div class="calendar-day event">
+                        <div class="day-number">12</div>
+                        <div class="event-item">Сдача социологии</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">13</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">14</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">15</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">16</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">17</div>
+                    </div>
+                    <div class="calendar-day event">
+                        <div class="day-number">18</div>
+                        <div class="event-item">Экзамен история</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">19</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">20</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">21</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">22</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">23</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">24</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">25</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">26</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">27</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">28</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">29</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">30</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">31</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="events-sidebar">
+                <h3><span>📌</span> Ближайшие события</h3>
+                
+                <div class="event-card">
+                    <div class="event-date">2 декабря, Пн</div>
+                    <div class="event-title">Лекция по социологии</div>
+                    <div class="event-time"><span>🕐</span> 10:00 - 11:30, ауд. 1205</div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">9 декабря, Пн</div>
+                    <div class="event-title">Консультация по истории</div>
+                    <div class="event-time"><span>🕐</span> 14:00 - 15:30, ауд. 3104</div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">12 декабря, Чт</div>
+                    <div class="event-title">Сдача работы по социологии</div>
+                    <div class="event-time"><span>🕐</span> До 23:59, онлайн</div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">15 декабря, Вс</div>
+                    <div class="event-title">Экзамен по физике</div>
+                    <div class="event-time"><span>🕐</span> 9:00 - 11:00, ауд. 4201</div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">18 декабря, Ср</div>
+                    <div class="event-title">Экзамен по истории</div>
+                    <div class="event-time"><span>🕐</span> 13:00 - 15:00, ауд. 3305</div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">20 декабря, Пт</div>
+                    <div class="event-title">Экзамен по математике</div>
+                    <div class="event-time"><span>🕐</span> 10:00 - 12:00, ауд. 2103</div>
+                </div>
+            </div>
+        </div>
+        
+        <a href="index.html" class="back-btn">
+            <span>←</span> Назад на главную
+        </a>
+    </div>
+</body>
+</html>

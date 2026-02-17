@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новости - ORIOKS 2.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .news-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .news-table th {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border: none;
+        }
+        
+        .news-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: top;
+        }
+        
+        .news-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .news-table tr:hover {
+            background: #f8f9ff;
+        }
+        
+        .news-date {
+            color: #666;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            width: 180px;
+        }
+        
+        .news-title {
+            color: #2c3e50;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #3498db;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: background 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <span>📚</span>
+                <span>ORIOKS 2.0 - Новости</span>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html"><span>🏠</span> Главная</a></li>
+                    <li><a href="news.html" style="background: rgba(255,255,255,0.1);"><span>📖</span> Новости</a></li>
+                    <li><a href="#"><span>📁</span> Материалы</a></li>
+                    <li><a href="#"><span>📅</span> Календарь</a></li>
+                    <li><a href="#"><span>ℹ️</span> О нас</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h1 style="margin-bottom: 1.5rem; color: #2c3e50;">Новости МИЭТ</h1>
+        
+        <table class="news-table">
+            <thead>
+                <tr>
+                    <th width="180">Дата</th>
+                    <th>Заголовок</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="news-date">2025-11-27 11:06:15</td><td class="news-title">Опрос обучающихся, прибывших из Курской, Брянской, Белгородской, Орловской и Воронежской областей</td></tr>
+                <tr><td class="news-date">2025-11-24 16:26:15</td><td class="news-title">На текущий момент занятия в бакалавриате отменяются до конца дня. В магистратуре занятия начнутся по расписанию с 6 пары</td></tr>
+                <tr><td class="news-date">2025-11-19 11:49:24</td><td class="news-title">О запрете деятельности компании, которая разработала популярные игры "Казаки" и S.T.A.L.K.E.R</td></tr>
+                <tr><td class="news-date">2025-11-14 14:39:10</td><td class="news-title">Новое в ОРИОКС: Психологический тест</td></tr>
+                <tr><td class="news-date">2025-11-14 10:35:36</td><td class="news-title">Всероссийский космический диктант</td></tr>
+                <tr><td class="news-date">2025-11-12 09:44:39</td><td class="news-title">Конкурс на стипендию имени К.А.Валиева на 2025/26 учебный год</td></tr>
+                <tr><td class="news-date">2025-11-11 14:28:07</td><td class="news-title">Семинар о налоговых вычетах</td></tr>
+                <tr><td class="news-date">2025-11-07 17:40:46</td><td class="news-title">Проведение дополнительных санитарно-противоэпидемических мероприятий</td></tr>
+                <tr><td class="news-date">2025-10-31 09:40:16</td><td class="news-title">Тренинг предпринимательских компетенций STARTUP HUB</td></tr>
+                <tr><td class="news-date">2025-10-28 10:54:37</td><td class="news-title">Сроки проведения промежуточной аттестации в 1 семестре 2025-2026 уч. года</td></tr>
+                <tr><td class="news-date">2025-10-21 16:31:32</td><td class="news-title">Конкурс на стипендию Президента РФ на 2025/26 учебный год</td></tr>
+                <tr><td class="news-date">2025-10-21 16:29:59</td><td class="news-title">Конкурс на стипендию Правительства РФ на 2025/26 учебный год</td></tr>
+                <tr><td class="news-date">2025-10-09 13:40:03</td><td class="news-title">«Школа молодого ученого – 2025» открывает свои двери</td></tr>
+                <tr><td class="news-date">2025-10-03 15:20:06</td><td class="news-title">Сезонная вакцинация против гриппа</td></tr>
+                <tr><td class="news-date">2025-10-01 12:27:48</td><td class="news-title">О внесении изменений в расписание занятий</td></tr>
+                <tr><td class="news-date">2025-09-30 14:31:22</td><td class="news-title">Должникам: о записи на пересдачи</td></tr>
+                <tr><td class="news-date">2025-09-25 16:25:59</td><td class="news-title">О необходимости повторной отправки домашних заданий</td></tr>
+                <tr><td class="news-date">2025-09-24 09:49:45</td><td class="news-title">Международный диктант по финансовой грамотности</td></tr>
+                <tr><td class="news-date">2025-09-24 09:42:15</td><td class="news-title">О проведении пересдач по физическим и математическим дисциплинам института ФПМ</td></tr>
+                <tr><td class="news-date">2025-09-11 14:28:02</td><td class="news-title">МИЭТ открывает набор на акселерационные программы «Электроника» и «Спорттех 2025»</td></tr>
+                <tr><td class="news-date">2025-09-09 16:13:28</td><td class="news-title">Презентация Студенческого спортивного клуба "Электрон"</td></tr>
+                <tr><td class="news-date">2025-09-03 15:55:21</td><td class="news-title">Обучающимся магистратуры о необходимости предоставления информации в бухгалтерию МИЭТ</td></tr>
+                <tr><td class="news-date">2025-09-01 11:54:17</td><td class="news-title">О порядке и сроках выбора элективных и факультативных дисциплин</td></tr>
+                <tr><td class="news-date">2025-07-23 11:42:55</td><td class="news-title">Всероссийский форум молодых ученых «Полюс» / Всероссийский проект «Школа наставничества» / Международный чемпионат по алгоритмическому программированию «РуКод»</td></tr>
+                <tr><td class="news-date">2025-07-14 11:48:30</td><td class="news-title">Всероссийская программа сопровождения молодых государственных и муниципальных служащих «ГосСтарт»</td></tr>
+                <tr><td class="news-date">2025-06-27 14:16:58</td><td class="news-title">Получи 500 000 рублей на развитие инновационного проекта</td></tr>
+                <tr><td class="news-date">2025-06-10 14:15:21</td><td class="news-title">Для получения диплома обучающимся выпускных курсов необходимо оформить обходной лист</td></tr>
+                <tr><td class="news-date">2025-06-10 11:27:56</td><td class="news-title">Праздничные дни в июне</td></tr>
+            </tbody>
+        </table>
+        
+        <a href="index.html" class="back-btn">
+            <span>←</span> Назад на главную
+        </a>
+    </div>
+</body>
+</html>
